@@ -20,7 +20,7 @@ $(document).ready(function () {
         offsetValue = parseInt($("#limiter").val());
         offset = offset + offsetValue;
         console.log(offset + " | " + offsetValue);
-        $(".grid").prepend(newSearch());
+        newSearch();
     });
 
 
@@ -59,24 +59,27 @@ $(document).ready(function () {
                 var gifDiv = $("<div>").addClass("grid-item");
                 var gifInfo = $("<span>").addClass("div-info")
                 var gifImg = $("<img>");
-                $(".div-info").css("display", "initial");
-                $(gifImg).attr("data-gif", results[i].images.original.url);
-                $(gifImg).attr("src", results[i].images.original_still.url);
+                $(gifImg).attr("data-gif", results[i].images.downsized.url);
+                $(gifImg).attr("src", results[i].images.downsized_still.url);
                 $(gifDiv).append(gifImg);
                 $(gifDiv).append(gifInfo);
-                $(gifInfo).prepend("<p> Title: " + results[i].title + "</p><p> Rated: " + results[i].rating + "</p><p> By User: " + results[i].username + "</p>");
-                $(".grid").prepend(gifDiv);
+                $(gifInfo).append("<p> Title: " + results[i].title + "</p><p> Rated: " + results[i].rating + "</p><p> By User: " + results[i].username + "</p>");
+                $(".grid").append(gifDiv);
             }
-            $("img").on("click", function () {
+            $(".div-info").on("click", function () {
                 console.log(this);
-                var gif = $(this).attr("data-gif");
-                $(this).attr("src", gif)
+                var gif = $(this).parent().find("img").attr("data-gif");
+                $(this).parent().find("img").attr("src", gif)
             });
 
             $(".grid-item").hover(function () {
-                var gif = $(this).attr("data-gif");
-                $(this).find("img").attr("src", gif);
-                $(this).find(".div-info").toggle("display");
+                // var gif = $(this).attr("data-gif");
+                // $(this).find("img").attr("src", gif);
+                // $(this).find(".div-info").toggle("display");
+                $(this).find(".div-info").show();
+            }, function () {
+                $(this).find(".div-info").hide();
+
             });
         });
 
