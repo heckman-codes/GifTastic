@@ -57,17 +57,18 @@ $(document).ready(function () {
             for (let i = 0; i < results.length; i++) {
                 gifIndex.push(response.data[i]);
                 var gifDiv = $("<div>").addClass("grid-item");
-                var gifInfo = $("<span>").addClass("div-info")
+                var gifInfo = $("<span>").addClass("div-info");
+                var favGif = $("<button>").addClass("fav-gif").text("Favorite?");
                 var gifImg = $("<img>");
                 $(gifImg).attr("data-gif", results[i].images.downsized.url);
                 $(gifImg).attr("src", results[i].images.downsized_still.url);
                 $(gifDiv).append(gifImg);
                 $(gifDiv).append(gifInfo);
                 $(gifInfo).append("<p> Title: " + results[i].title + "</p><p> Rated: " + results[i].rating + "</p><p> By User: " + results[i].username + "</p>");
-                $(".grid").append(gifDiv);
+                $(gifInfo).append(favGif);
+                $(".grid").prepend(gifDiv);
             }
             $(".div-info").on("click", function () {
-                console.log(this);
                 var gif = $(this).parent().find("img").attr("data-gif");
                 $(this).parent().find("img").attr("src", gif)
             });
@@ -81,6 +82,11 @@ $(document).ready(function () {
                 $(this).find(".div-info").hide();
 
             });
+            //Trying to get
+            $(".fav-gif").on("click", function () {
+                $(this).parents(".grid-item").appendTo(".fav-grid");
+                console.log(this);
+            })
         });
 
     }

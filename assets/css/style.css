@@ -1,14 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #333333;
+    background-color: white;
 
 }
 
 form {
     margin: 0px 0px 20px 0px;
     padding: 20px 0px 10px 0px;
-    background-color:  #51d0de;
+    background-color:  #e0c4c4;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
 
 }
 
@@ -21,11 +24,11 @@ label {
 #wrapper {
     margin: 0 auto;
     width: 1000px;
-    background-color: #333333;
+    background-color: white;
     height: auto;
 }
 
-.grid {
+.fav-grid, .grid {
     line-height: 0;
     -webkit-column-count: 5;
     -webkit-column-gap:   0px;
@@ -36,43 +39,46 @@ label {
   }
 
   @media (max-width: 1000px) {
-    .grid {
+    .fav-grid, .grid {
     -moz-column-count:    4;
     -webkit-column-count: 4;
     column-count:         4;
     }
   }
   @media (max-width: 800px) {
-    .grid {
+    .fav-grid, .grid {
     -moz-column-count:    3;
     -webkit-column-count: 3;
     column-count:         3;
     }
   }
   @media (max-width: 600px) {
-    .grid {
+    .fav-grid, .grid {
     -moz-column-count:    2;
     -webkit-column-count: 2;
     column-count:         2;
     }
   }
   @media (max-width: 550px) {
-    .grid {
+    .fav-grid, .grid {
     -moz-column-count:    1;
     -webkit-column-count: 1;
     column-count:         1;
     }
   }
 
-hr {
-    background-color: white;
+    hr {
+    margin-top: 2px;
+    margin-bottom: 10px;
+    border-top: 1px solid white ;
+    border-bottom: 1px solid black;
 }
   img {
     z-index: 1;
     width: 100%;
   }
   .grid-item {
-      position: relative;
+    position: relative;
     float: left;
     width: 100% !important;
     height: auto !important;
@@ -91,27 +97,35 @@ hr {
 
 }
 
+h2 {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Helvetica', sans-serif;
+    color: black;
+}
+
 #search-bar {
     vertical-align: baseline;
     margin: 0px 0px 0px 0px;
-    height: 23px;
+    height: 22px;
     font-weight: bold;
-    background-color:   #51d0de;
+    background-color:   #e0c4c4;
     font-size: 20px;
     font-family: 'Helvetica', sans-serif;
     color: black;
     border-style: none;
     border-bottom: 1px solid black;
-    width: 170px;
+    width: 220px;
 }
 
 
 #search-bar:active {
-    background-color:  #51d0de;
+    background-color:  #e0c4c4;
     border-bottom: 2px solid black;
 }
 #search-bar:valid {
-    background-color:   #51d0de;
+    background-color:   #e0c4c4;
     border-bottom: 1px solid black;
 }
 
@@ -130,8 +144,10 @@ p {
     left:0px;
     bottom:0px;
     right:0px;
-    background-color:rgba(0,0,0,.5)
+    background-color:rgba(0,0,0,.5);
+    overflow: hidden;
 }
+
 
 
 #clear-button, button, #search-button, select {
@@ -141,7 +157,19 @@ p {
     border-style: none;
     border-bottom: 1px solid black;
     color: black;
-    background-color:  #51d0de;
+    background-color:  #e0c4c4;
+    cursor: pointer;
+}
+
+.fav-gif{
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border-style: none;
+    margin: 5px 0px 0px 10px;
+    border-bottom: 1px solid black;
+    color: black;
+    background-color: white;
     cursor: pointer;
 }
 
