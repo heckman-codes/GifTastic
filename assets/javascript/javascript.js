@@ -2,6 +2,7 @@ $(document).ready(function () {
     var gifIndex = []
     var offset = 0;
     var offsetValue = $("#limiter").val();
+    // var searchVal = $("input[type=text]").val();
 
     $("#search-button").on("click", function (event) {
         clearGifs();
@@ -37,6 +38,10 @@ $(document).ready(function () {
 
     }
 
+    // $(document).on("click", ".recent-button", function () {
+    //     searchVal = $(this).val("data-query");
+    //     newSearch();
+    // });
 
     function newSearch() {
 
@@ -54,11 +59,21 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             var results = response.data;
+            var searchButton = $("<button>")
+            $(searchButton).addClass("recent-button").attr("data-query", searchTerm).text(searchTerm);
+
+            // for (let i = 0; i < $("#search-button").length; i++) {
+            //     if (searchButton.val("data-query") !== $("#search-buttons").val("data-query")) {
+            //         $("#search-buttons").append(searchButton);
+            //     }
+            // }
+
+
             for (let i = 0; i < results.length; i++) {
                 gifIndex.push(response.data[i]);
                 var gifDiv = $("<div>").addClass("grid-item");
                 var gifInfo = $("<span>").addClass("div-info");
-                var favGif = $("<button>").addClass("fav-gif").text("Favorite?");
+                var favGif = $("<button>").addClass("fav-gif").text("Favorite");
                 var removeGif = $("<button>").addClass("remove-gif").text("Remove").hide();
                 var gifImg = $("<img>");
                 $(gifImg).attr("data-still", results[i].images.downsized_still.url);
@@ -66,10 +81,11 @@ $(document).ready(function () {
                 $(gifImg).attr("src", results[i].images.downsized_still.url);
                 $(gifDiv).append(gifImg);
                 $(gifDiv).append(gifInfo);
-                $(gifInfo).append("<p> Title: " + results[i].title + "</p><p> Rated: " + results[i].rating + "</p><p> By User: " + results[i].username + "</p>");
+                $(gifInfo).append("<p>" + results[i].username + "</p><p> Rated: " + results[i].rating + "</p>");
                 $(gifInfo).append(favGif);
                 $(gifInfo).append(removeGif);
                 $(".grid").prepend(gifDiv);
+
             }
 
 
@@ -87,9 +103,6 @@ $(document).ready(function () {
             });
 
             $(".grid-item").hover(function () {
-                // var gif = $(this).attr("data-gif");
-                // $(this).find("img").attr("src", gif);
-                // $(this).find(".div-info").toggle("display");
                 $(this).find(".div-info").show();
             }, function () {
                 $(this).find(".div-info").hide();
@@ -101,14 +114,14 @@ $(document).ready(function () {
                 $(this).parents(".grid-item").appendTo(".fav-grid");
                 $(this).hide();
                 $(this).parent().find(".remove-gif").show();
-                // $(this).parents(".grid-item").find(".fav-item").appendTo(".fav-grid");
                 console.log(this);
             });
 
             $(".remove-gif").on("click", function () {
                 $(this).parents(".grid-item").remove();
-                ew
             });
+
+
 
         });
 

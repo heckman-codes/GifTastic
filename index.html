@@ -25,7 +25,7 @@
     <div id="wrapper">
         <form>
             <object type="image/svg+xml" width="20" height="20" fill="white" data="https://image.flaticon.com/icons/svg/149/149852.svg"></object>
-            <input type="text" id="search-bar" placeholder="Search Here" />
+            <input type="text" name="search-here" id="search-bar" placeholder="Search Here" />
             <input type="submit" id="search-button" />
             <select id="limiter">
                 <option value="10" class="limiter-value">10</option>
@@ -36,16 +36,29 @@
             <input type="submit" id="clear-button" value="Clear" />
             <button id="more-button">Want More?</button>
         </form>
-        <h2>Favorites</h2>
-        <hr>
-        <div class="fav-grid">
+        <div id="side-bar">
+            <h2>Recent Searches</h2>
+            <hr>
+            <div id="search-buttons">
+
+            </div>
+            <h2>Favorites</h2>
+            <hr>
+            <div id="search-buttons">
+
+            </div>
+            <div class="fav-grid">
+
+            </div>
 
         </div>
+        <div id="main-searches"></div>
         <h2>Searches</h2>
         <hr>
         <div class="grid">
 
         </div>
+    </div>
     </div>
 
     <script type="text/javascript" src="assets/javascript/javascript.js"></script>
