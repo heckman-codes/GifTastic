@@ -51,6 +51,9 @@ label {
     -webkit-column-count: 3;
     column-count:         3;
     }
+    #wrapper {
+        width: 800px;
+    }
   }
   @media (max-width: 600px) {
     .fav-grid, .grid {
@@ -58,12 +61,18 @@ label {
     -webkit-column-count: 2;
     column-count:         2;
     }
+    #wrapper {
+        width: 600px;
+    }
   }
   @media (max-width: 550px) {
     .fav-grid, .grid {
     -moz-column-count:    1;
     -webkit-column-count: 1;
     column-count:         1;
+    }
+    #wrapper {
+        width: 550px;
     }
   }
 
@@ -78,6 +87,7 @@ label {
     width: 100%;
   }
   .grid-item {
+      /* margin: 0px 10px 10px 0px; */
     position: relative;
     float: left;
     width: 100% !important;
@@ -162,6 +172,18 @@ p {
 }
 
 .fav-gif{
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border-style: none;
+    margin: 5px 0px 0px 10px;
+    border-bottom: 1px solid black;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.remove-gif {
     font-family: Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 700;

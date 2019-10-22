@@ -59,18 +59,31 @@ $(document).ready(function () {
                 var gifDiv = $("<div>").addClass("grid-item");
                 var gifInfo = $("<span>").addClass("div-info");
                 var favGif = $("<button>").addClass("fav-gif").text("Favorite?");
+                var removeGif = $("<button>").addClass("remove-gif").text("Remove").hide();
                 var gifImg = $("<img>");
+                $(gifImg).attr("data-still", results[i].images.downsized_still.url);
                 $(gifImg).attr("data-gif", results[i].images.downsized.url);
                 $(gifImg).attr("src", results[i].images.downsized_still.url);
                 $(gifDiv).append(gifImg);
                 $(gifDiv).append(gifInfo);
                 $(gifInfo).append("<p> Title: " + results[i].title + "</p><p> Rated: " + results[i].rating + "</p><p> By User: " + results[i].username + "</p>");
                 $(gifInfo).append(favGif);
+                $(gifInfo).append(removeGif);
                 $(".grid").prepend(gifDiv);
             }
+
+
+            // $(".div-info").toggle(function () {
+            //     var gif = $(this).parent().find("img").attr("data-gif");
+            //     $(this).parent().find("img").attr("src", gif);
+            // }, function () {
+            //     var still = $(this).parent().find("img").attr("data-still");
+            //     $(this).parent().find("img").attr("src", still);
+            // });
+
             $(".div-info").on("click", function () {
                 var gif = $(this).parent().find("img").attr("data-gif");
-                $(this).parent().find("img").attr("src", gif)
+                $(this).parent().find("img").attr("src", gif);
             });
 
             $(".grid-item").hover(function () {
@@ -82,11 +95,21 @@ $(document).ready(function () {
                 $(this).find(".div-info").hide();
 
             });
-            //Trying to get
+            //adds gifs to favorite section
             $(".fav-gif").on("click", function () {
+                $(this).removeClass("fav-gif").text("Remove");
                 $(this).parents(".grid-item").appendTo(".fav-grid");
+                $(this).hide();
+                $(this).parent().find(".remove-gif").show();
+                // $(this).parents(".grid-item").find(".fav-item").appendTo(".fav-grid");
                 console.log(this);
-            })
+            });
+
+            $(".remove-gif").on("click", function () {
+                $(this).parents(".grid-item").remove();
+                ew
+            });
+
         });
 
     }
