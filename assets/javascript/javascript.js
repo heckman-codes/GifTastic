@@ -130,13 +130,8 @@ $(document).ready(function () {
 
         if (buttonIndex.indexOf(searchTerm) === -1) {
             buttonIndex.push(searchTerm);
-            console.log("tester")
         }
 
-        console.log(buttonIndex);
-
-        console.log(queryURL);
-        console.log(offset);
 
 
 
